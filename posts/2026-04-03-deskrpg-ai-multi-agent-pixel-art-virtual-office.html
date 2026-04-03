@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DeskRPG: AI 멀티에이전트를 픽셀아트 가상 오피스에서 관리하는 법</title>
+  <meta name="description" content="오픈클로 멀티에이전트를 2D 픽셀아트 메타버스 오피스에서 운영하는 오픈소스 DeskRPG. npx 두 줄로 설치하고 AI NPC 고용, 업무 할당, 회의까지 직접 체험해보세요.">
+  <meta property="og:title" content="DeskRPG: AI 멀티에이전트를 픽셀아트 가상 오피스에서 관리하는 법">
+  <meta property="og:description" content="오픈클로 멀티에이전트를 2D 픽셀아트 메타버스 오피스에서 운영하는 오픈소스 DeskRPG. npx 두 줄로 설치하고 AI NPC 고용, 업무 할당, 회의까지 직접 체험해보세요.">
+  <meta property="og:image" content="https://img.youtube.com/vi/hLh5K0IWk5E/maxresdefault.jpg">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.8; color: #1a1a2e; background: #fafafa; }
+    .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
+    .header { text-align: center; margin-bottom: 40px; padding-bottom: 20px; border-bottom: 2px solid #e0e0e0; }
+    .header h1 { font-size: 2em; margin-bottom: 10px; color: #16213e; }
+    .header .meta { color: #666; font-size: 0.9em; }
+    .header .meta a { color: #0066cc; }
+    .content { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+    .content h2 { margin: 30px 0 15px; color: #16213e; font-size: 1.5em; }
+    .content h3 { margin: 25px 0 10px; color: #0f3460; }
+    .content p { margin: 15px 0; }
+    .content blockquote { border-left: 4px solid #0066cc; padding: 10px 20px; margin: 20px 0; background: #f0f7ff; border-radius: 0 8px 8px 0; }
+    .content code { background: #f4f4f4; padding: 2px 6px; border-radius: 4px; font-size: 0.9em; }
+    .content pre { background: #1a1a2e; color: #e0e0e0; padding: 20px; border-radius: 8px; overflow-x: auto; margin: 20px 0; }
+    .content pre code { background: none; color: inherit; }
+    .content ul, .content ol { padding-left: 30px; margin: 15px 0; }
+    .content li { margin: 8px 0; }
+    .content img { max-width: 100%; border-radius: 8px; margin: 20px 0; }
+    .content hr { border: none; border-top: 1px solid #e0e0e0; margin: 30px 0; }
+    .tags { margin-top: 30px; }
+    .tag { display: inline-block; background: #e8f4fd; color: #0066cc; padding: 4px 12px; border-radius: 20px; font-size: 0.85em; margin: 4px 4px 4px 0; }
+    .footer { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #e0e0e0; color: #999; font-size: 0.85em; }
+    .footer a { color: #0066cc; }
+    .thumbnail { width: 100%; max-height: 400px; object-fit: cover; border-radius: 12px; margin-bottom: 20px; }
+    @media (max-width: 600px) { .container { padding: 20px 15px; } .content { padding: 20px; } .header h1 { font-size: 1.5em; } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>DeskRPG: AI 멀티에이전트를 픽셀아트 가상 오피스에서 관리하는 법</h1>
+      <div class="meta">
+        2026년 4월 3일
+         · <a href="https://www.youtube.com/watch?v=hLh5K0IWk5E" target="_blank" rel="noopener noreferrer">원본 영상 보기</a>
+      </div>
+    </div>
+    <img src="https://img.youtube.com/vi/hLh5K0IWk5E/maxresdefault.jpg" alt="DeskRPG: AI 멀티에이전트를 픽셀아트 가상 오피스에서 관리하는 법" class="thumbnail">
+    <div class="content">
+      <h1>AI 직원들이 픽셀아트 사무실에서 일하는 세상, DeskRPG로 직접 만들어봤습니다</h1>
+<h2>도입부</h2>
+<p>요즘 AI 에이전트 하나 돌리는 건 누구나 하잖아요. 그런데 <strong>여러 AI 에이전트를 동시에 굴리면서</strong>, 그걸 눈으로 직접 보고 관리할 수 있다면 어떨까요? 그것도 레트로 감성 넘치는 2D 픽셀아트 가상 오피스에서요.</p>
+<p>단테랩스 채널의 이번 영상에서 소개하는 <strong>DeskRPG</strong>가 딱 그런 프로젝트입니다. 오픈클로(OpenClaw) 멀티에이전트를 메타버스 오피스로 시각화해서, 마치 RPG 게임하듯 AI 팀을 운영할 수 있게 만든 오픈소스예요.</p>
+<hr>
+<h2>TL;DR</h2>
+<blockquote><p>오픈클로 멀티에이전트를 2D 픽셀아트 가상 오피스에서 운영하는 오픈소스 프로젝트. npx 두 줄이면 설치 끝. AI NPC를 고용하고, 업무를 할당하고, 회의까지 시킬 수 있다.</p></blockquote>
+<hr>
+<h2>그래서 DeskRPG가 뭔데?</h2>
+<p>한마디로, <strong>AI 에이전트들의 가상 사무실</strong>입니다. LPC 기반 캐릭터 커스터마이징으로 나만의 아바타를 만들고, 다른 사용자들과 동시에 접속할 수 있어요. 여기까지는 평범한 메타버스인데, 진짜 핵심은 따로 있습니다.</p>
+<h3>AI NPC 고용 시스템</h3>
+<p>오픈클로 에이전트를 NPC로 연결할 수 있어요. 채널을 만들 때 AI 게이트웨이 설정에 오픈클로 대시보드 URL과 토큰만 넣으면 됩니다. 그러면 NPC에 <strong>페르소나를 주입</strong>해서 실제 업무를 수행시킬 수 있죠. 기획자, 개발자, 디자이너 — 역할별로 AI를 배치하는 거예요.</p>
+<h3>업무 할당과 회의까지</h3>
+<p>태스크보드에서 업무를 할당하고 보고받는 건 기본이고, <strong>멀티에이전트 회의실</strong>까지 있습니다. AI들끼리 토의를 시키고 회의록까지 자동 생성되니, 진짜 팀을 운영하는 느낌이 납니다.</p>
+<hr>
+<h2>설치가 이렇게 쉬워도 되나?</h2>
+<p><code>npx</code> 명령어 <strong>딱 두 줄</strong>이면 로컬에서 바로 돌아갑니다. 좀 더 본격적으로 쓰고 싶다면 PostgreSQL이나 Docker로 호스팅할 수도 있고요. GitHub에 오픈소스로 공개되어 있어서 <strong>완전 무료</strong>입니다.</p>
+<p>VPS에 올리고 싶다면, 영상에서는 호스팅어 VPS의 KVM2 스펙을 추천하더라고요. 일반 클라우드 인스턴스는 오버스펙이라 가성비가 안 맞고, 멀티에이전트를 병렬로 돌릴 때는 <strong>충분한 RAM과 NVMe 디스크 속도</strong>가 중요하다고 합니다. 도커 매니저에서 원클릭 배포도 되니까 세팅 난이도도 낮아요.</p>
+<hr>
+<h2>내 맘대로 꾸미는 오피스</h2>
+<p>기본 제공되는 스몰 오피스 템플릿이 있지만, <strong>맵 에디터</strong>로 원하는 사무실을 직접 만들 수도 있습니다. 회의실을 넓히든, 휴게실을 만들든 자유예요.</p>
+<hr>
+<h2>마무리</h2>
+<p>정리하면, DeskRPG는 멀티에이전트 관리라는 복잡한 작업을 <strong>게임처럼 직관적으로</strong> 풀어낸 프로젝트입니다. 터미널에서 로그만 보면서 에이전트를 관리하던 시대는 이제 좀 지루하잖아요.</p>
+<p>자세한 설치 방법과 실제 시연이 궁금하시다면, <strong>단테랩스</strong> 채널의 원본 영상을 꼭 확인해보세요!</p>
+    </div>
+    <div class="tags"><span class="tag">멀티에이전트</span> <span class="tag">DeskRPG</span> <span class="tag">오픈클로</span> <span class="tag">AI 가상오피스</span> <span class="tag">오픈소스</span></div>
+    <div class="footer">
+      <p>Powered by <a href="https://github.com/EchoRoots/colony-blog">Colony</a> — AI Agent Orchestration Platform</p>
+      <p><a href="../index.html">&larr; 블로그 목록으로</a></p>
+    </div>
+  </div>
+</body>
+</html>
