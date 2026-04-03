@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DeskRPG 설치 가이드: AI 멀티에이전트를 2D 메타버스 오피스에서 관리하는 법</title>
+  <meta name="description" content="AI 에이전트 여러 개를 동시에 관리하는 오픈소스 도구 DeskRPG 설치법과 활용법을 소개합니다. npx 두 줄 설치, 월 13,000원 VPS 운영으로 멀티에이전트 협업을 시작하세요.">
+  <meta name="author" content="Colony AI">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="DeskRPG 설치 가이드: AI 멀티에이전트를 2D 메타버스 오피스에서 관리하는 법">
+  <meta property="og:description" content="AI 에이전트 여러 개를 동시에 관리하는 오픈소스 도구 DeskRPG 설치법과 활용법을 소개합니다. npx 두 줄 설치, 월 13,000원 VPS 운영으로 멀티에이전트 협업을 시작하세요.">
+  <meta property="og:image" content="https://img.youtube.com/vi/hLh5K0IWk5E/maxresdefault.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="DeskRPG 설치 가이드: AI 멀티에이전트를 2D 메타버스 오피스에서 관리하는 법">
+  <meta name="twitter:description" content="AI 에이전트 여러 개를 동시에 관리하는 오픈소스 도구 DeskRPG 설치법과 활용법을 소개합니다. npx 두 줄 설치, 월 13,000원 VPS 운영으로 멀티에이전트 협업을 시작하세요.">
+  <meta name="twitter:image" content="https://img.youtube.com/vi/hLh5K0IWk5E/maxresdefault.jpg">
+
+  <!-- 구조화 데이터 -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"DeskRPG 설치 가이드: AI 멀티에이전트를 2D 메타버스 오피스에서 관리하는 법","author":{"@type":"Person","name":"Colony AI"},"datePublished":"2026-04-03T05:41:20.763Z","image":"https://img.youtube.com/vi/hLh5K0IWk5E/maxresdefault.jpg","description":"AI 에이전트 여러 개를 동시에 관리하는 오픈소스 도구 DeskRPG 설치법과 활용법을 소개합니다. npx 두 줄 설치, 월 13,000원 VPS 운영으로 멀티에이전트 협업을 시작하세요."}</script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== CSS Custom Properties (라이트 모드 기본) ===== */
+    :root {
+      --color-bg: #fafbfe;
+      --color-surface: #ffffff;
+      --color-surface-hover: #f7f8fc;
+      --color-text: #1a1a2e;
+      --color-text-secondary: #5a5a7a;
+      --color-text-muted: #8888aa;
+      --color-primary: #4f46e5;
+      --color-primary-light: #eef2ff;
+      --color-primary-dark: #3730a3;
+      --color-accent: #06b6d4;
+      --color-border: #e5e7eb;
+      --color-border-light: #f0f1f5;
+      --color-code-bg: #1e1e2e;
+      --color-code-text: #cdd6f4;
+      --color-blockquote-bg: #f0f4ff;
+      --color-blockquote-border: linear-gradient(180deg, var(--color-primary), var(--color-accent));
+      --color-hero-overlay: linear-gradient(180deg, rgba(15,15,35,0.3) 0%, rgba(15,15,35,0.85) 100%);
+      --color-nav-bg: rgba(255,255,255,0.85);
+      --color-shadow: rgba(0,0,0,0.06);
+      --color-shadow-lg: rgba(0,0,0,0.1);
+      --font-sans: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-serif: 'Noto Serif KR', Georgia, 'Times New Roman', serif;
+      --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+      --content-width: 720px;
+      --layout-width: 1200px;
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 20px;
+      --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ===== 다크 모드 ===== */
+    [data-theme="dark"] {
+      --color-bg: #0f0f1a;
+      --color-surface: #1a1a2e;
+      --color-surface-hover: #222240;
+      --color-text: #e4e4f0;
+      --color-text-secondary: #a0a0c0;
+      --color-text-muted: #6a6a8a;
+      --color-primary: #818cf8;
+      --color-primary-light: #1e1e3a;
+      --color-primary-dark: #a5b4fc;
+      --color-border: #2a2a45;
+      --color-border-light: #1f1f35;
+      --color-code-bg: #11111b;
+      --color-code-text: #cdd6f4;
+      --color-blockquote-bg: #1a1a35;
+      --color-nav-bg: rgba(15,15,26,0.9);
+      --color-shadow: rgba(0,0,0,0.2);
+      --color-shadow-lg: rgba(0,0,0,0.4);
+      --color-hero-overlay: linear-gradient(180deg, rgba(10,10,20,0.4) 0%, rgba(10,10,20,0.92) 100%);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --color-bg: #0f0f1a;
+        --color-surface: #1a1a2e;
+        --color-surface-hover: #222240;
+        --color-text: #e4e4f0;
+        --color-text-secondary: #a0a0c0;
+        --color-text-muted: #6a6a8a;
+        --color-primary: #818cf8;
+        --color-primary-light: #1e1e3a;
+        --color-primary-dark: #a5b4fc;
+        --color-border: #2a2a45;
+        --color-border-light: #1f1f35;
+        --color-code-bg: #11111b;
+        --color-code-text: #cdd6f4;
+        --color-blockquote-bg: #1a1a35;
+        --color-nav-bg: rgba(15,15,26,0.9);
+        --color-shadow: rgba(0,0,0,0.2);
+        --color-shadow-lg: rgba(0,0,0,0.4);
+        --color-hero-overlay: linear-gradient(180deg, rgba(10,10,20,0.4) 0%, rgba(10,10,20,0.92) 100%);
+      }
+    }
+
+    /* ===== 리셋 & 기본 ===== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-sans);
+      line-height: 1.8;
+      color: var(--color-text);
+      background: var(--color-bg);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    ::selection { background: var(--color-primary); color: #fff; }
+
+    /* ===== 애니메이션 ===== */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    .animate-in { animation: fadeInUp 0.6s ease-out both; }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+
+    /* ===== 네비게이션 바 ===== */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: var(--color-nav-bg);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--color-border);
+      transition: background var(--transition);
+    }
+    .navbar-inner {
+      max-width: var(--layout-width); margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 24px; height: 64px;
+    }
+    .navbar-logo {
+      font-family: var(--font-serif); font-weight: 700; font-size: 1.25rem;
+      color: var(--color-text); text-decoration: none;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .navbar-logo .logo-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--color-primary); display: inline-block;
+    }
+    .navbar-menu { display: flex; align-items: center; gap: 24px; list-style: none; }
+    .navbar-menu a {
+      color: var(--color-text-secondary); text-decoration: none;
+      font-size: 0.9rem; font-weight: 500; transition: color var(--transition);
+    }
+    .navbar-menu a:hover { color: var(--color-primary); }
+    .theme-toggle {
+      background: none; border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm); padding: 6px 10px; cursor: pointer;
+      color: var(--color-text-secondary); font-size: 1rem;
+      transition: all var(--transition);
+    }
+    .theme-toggle:hover { border-color: var(--color-primary); color: var(--color-primary); }
+
+    /* ===== 히어로 영역 ===== */
+    .hero {
+      position: relative; width: 100%; min-height: 480px;
+      display: flex; align-items: flex-end;
+      margin-top: 64px; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: url('https://img.youtube.com/vi/hLh5K0IWk5E/maxresdefault.jpg') center/cover no-repeat;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: var(--color-hero-overlay);
+    }
+    .hero-content {
+      position: relative; z-index: 1;
+      max-width: var(--layout-width); width: 100%;
+      margin: 0 auto; padding: 60px 24px 48px;
+    }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+    .hero-tag {
+      display: inline-block; padding: 4px 14px; border-radius: 20px;
+      font-size: 0.8rem; font-weight: 500;
+      background: rgba(255,255,255,0.15); color: #fff;
+      backdrop-filter: blur(4px);
+    }
+    .hero-title {
+      font-family: var(--font-serif); font-size: 2.75rem;
+      font-weight: 700; line-height: 1.3; color: #fff;
+      max-width: 800px; margin-bottom: 20px;
+    }
+    .hero-meta {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 16px;
+      color: rgba(255,255,255,0.7); font-size: 0.9rem;
+    }
+    .hero-meta-item { display: flex; align-items: center; gap: 6px; }
+    .hero-meta svg { width: 16px; height: 16px; fill: currentColor; opacity: 0.8; }
+
+    /* ===== 레이아웃 (본문 + 사이드바) ===== */
+    .layout {
+      display: grid;
+      grid-template-columns: 1fr minmax(0, var(--content-width)) 260px;
+      gap: 40px;
+      max-width: var(--layout-width);
+      margin: 0 auto; padding: 48px 24px 80px;
+    }
+    .layout-left { /* 빈 공간 — 균형용 */ }
+
+    /* ===== 본문 ===== */
+    .article-body {
+      min-width: 0;
+      animation: fadeInUp 0.6s ease-out both;
+    }
+    .article-body h1, .article-body h2, .article-body h3,
+    .article-body h4, .article-body h5, .article-body h6 {
+      font-family: var(--font-serif);
+      color: var(--color-text);
+      margin: 2em 0 0.75em; line-height: 1.4;
+      position: relative;
+    }
+    .article-body h1 { font-size: 2rem; }
+    .article-body h2 { font-size: 1.65rem; padding-bottom: 8px; border-bottom: 1px solid var(--color-border-light); }
+    .article-body h3 { font-size: 1.35rem; }
+    .article-body h4 { font-size: 1.15rem; }
+
+    .heading-anchor {
+      position: absolute; left: -1.5em; top: 50%; transform: translateY(-50%);
+      color: var(--color-primary); text-decoration: none;
+      opacity: 0; font-weight: 400; font-size: 0.85em;
+      transition: opacity var(--transition);
+    }
+    .article-body h2:hover .heading-anchor,
+    .article-body h3:hover .heading-anchor,
+    .article-body h4:hover .heading-anchor { opacity: 1; }
+
+    .article-body p {
+      margin: 1.25em 0; font-size: 1.05rem;
+      color: var(--color-text-secondary); line-height: 1.9;
+    }
+    .article-body a {
+      color: var(--color-primary); text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color var(--transition);
+    }
+    .article-body a:hover { color: var(--color-primary-dark); }
+    .article-body strong { color: var(--color-text); font-weight: 700; }
+    .article-body em { font-style: italic; }
+    .article-body del { text-decoration: line-through; color: var(--color-text-muted); }
+
+    /* 인용문 */
+    .article-body blockquote {
+      position: relative;
+      margin: 1.5em 0; padding: 1.25em 1.5em;
+      background: var(--color-blockquote-bg);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      border-left: 4px solid transparent;
+      border-image: var(--color-blockquote-border) 1;
+    }
+    .article-body blockquote p { color: var(--color-text-secondary); margin: 0.5em 0; font-style: italic; }
+
+    /* 코드 */
+    .article-body code {
+      font-family: var(--font-mono); font-size: 0.88em;
+      background: var(--color-primary-light); color: var(--color-primary);
+      padding: 2px 8px; border-radius: 4px;
+    }
+    .code-block-wrapper {
+      position: relative; margin: 1.5em 0;
+      border-radius: var(--radius-md); overflow: hidden;
+      box-shadow: 0 4px 24px var(--color-shadow-lg);
+    }
+    .code-block-wrapper pre {
+      background: var(--color-code-bg); color: var(--color-code-text);
+      padding: 1.5em; overflow-x: auto; margin: 0;
+      font-family: var(--font-mono); font-size: 0.9rem; line-height: 1.7;
+    }
+    .code-block-wrapper pre code {
+      background: none; color: inherit; padding: 0; border-radius: 0; font-size: inherit;
+    }
+    .code-lang-label {
+      position: absolute; top: 0; left: 0;
+      padding: 4px 12px; font-size: 0.72rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.5px;
+      background: var(--color-primary); color: #fff;
+      border-radius: 0 0 var(--radius-sm) 0;
+    }
+    .code-copy-btn {
+      position: absolute; top: 8px; right: 8px;
+      padding: 4px 12px; font-size: 0.75rem;
+      background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.6);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-sm); cursor: pointer;
+      transition: all var(--transition); font-family: var(--font-sans);
+    }
+    .code-copy-btn:hover { background: rgba(255,255,255,0.2); color: #fff; }
+
+    /* 리스트 */
+    .article-body ul, .article-body ol {
+      margin: 1em 0; padding-left: 1.5em;
+    }
+    .article-body ul { list-style: none; }
+    .article-body ul > li { position: relative; padding-left: 1em; }
+    .article-body ul > li::before {
+      content: ''; position: absolute; left: 0; top: 0.75em;
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--color-primary);
+    }
+    .article-body ol { list-style: none; counter-reset: ol-counter; }
+    .article-body ol > li { position: relative; padding-left: 2em; counter-increment: ol-counter; }
+    .article-body ol > li::before {
+      content: counter(ol-counter);
+      position: absolute; left: 0; top: 0;
+      width: 1.5em; height: 1.5em; border-radius: 50%;
+      background: var(--color-primary-light); color: var(--color-primary);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.8em; font-weight: 700;
+    }
+    .article-body li { margin: 0.5em 0; color: var(--color-text-secondary); }
+
+    /* 이미지 */
+    .article-body .post-image {
+      margin: 2em 0; text-align: center;
+    }
+    .article-body .post-image img {
+      max-width: 100%; border-radius: var(--radius-md);
+      box-shadow: 0 4px 20px var(--color-shadow-lg);
+    }
+    .article-body .post-image figcaption {
+      margin-top: 8px; font-size: 0.85rem;
+      color: var(--color-text-muted); font-style: italic;
+    }
+
+    /* 수평선 */
+    .article-body hr {
+      border: none; margin: 2.5em auto;
+      width: 60px; height: 3px; border-radius: 2px;
+      background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+    }
+
+    /* 테이블 */
+    .table-wrapper { overflow-x: auto; margin: 1.5em 0; border-radius: var(--radius-md); border: 1px solid var(--color-border); }
+    .table-wrapper table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    .table-wrapper th { background: var(--color-primary-light); color: var(--color-primary); font-weight: 600; text-align: left; padding: 12px 16px; }
+    .table-wrapper td { padding: 10px 16px; border-top: 1px solid var(--color-border); color: var(--color-text-secondary); }
+    .table-wrapper tr:hover td { background: var(--color-surface-hover); }
+
+    /* ===== 사이드바 (목차 + 소셜 공유) ===== */
+    .sidebar {
+      position: sticky; top: 88px; align-self: start;
+      max-height: calc(100vh - 100px); overflow-y: auto;
+    }
+    .toc-panel {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 20px; margin-bottom: 20px;
+    }
+    .toc-title {
+      font-size: 0.8rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1px;
+      color: var(--color-text-muted); margin-bottom: 12px;
+    }
+    .toc-link {
+      display: block; padding: 5px 0; font-size: 0.85rem;
+      color: var(--color-text-muted); text-decoration: none;
+      border-left: 2px solid transparent;
+      padding-left: 12px; margin-left: -1px;
+      transition: all var(--transition);
+    }
+    .toc-link:hover, .toc-link.active {
+      color: var(--color-primary);
+      border-left-color: var(--color-primary);
+    }
+    .toc-h3 { padding-left: 24px; font-size: 0.82rem; }
+    .toc-h4 { padding-left: 36px; font-size: 0.78rem; }
+
+    .share-panel {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 20px;
+    }
+    .share-title {
+      font-size: 0.8rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1px;
+      color: var(--color-text-muted); margin-bottom: 12px;
+    }
+    .share-buttons { display: flex; gap: 8px; flex-wrap: wrap; }
+    .share-btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 40px; height: 40px; border-radius: var(--radius-sm);
+      border: 1px solid var(--color-border);
+      background: var(--color-surface); color: var(--color-text-secondary);
+      text-decoration: none; font-size: 0.9rem; cursor: pointer;
+      transition: all var(--transition);
+    }
+    .share-btn:hover {
+      border-color: var(--color-primary); color: var(--color-primary);
+      transform: translateY(-2px); box-shadow: 0 4px 12px var(--color-shadow);
+    }
+
+    /* ===== 하단 영역 ===== */
+    .post-footer {
+      max-width: var(--content-width);
+      margin: 0 auto; padding: 0 24px 80px;
+    }
+
+    /* 태그 */
+    .tags-section { margin-bottom: 48px; }
+    .tag {
+      display: inline-block; padding: 6px 16px; margin: 4px;
+      border-radius: 20px; font-size: 0.82rem; font-weight: 500;
+      background: var(--color-primary-light); color: var(--color-primary);
+      transition: all var(--transition);
+    }
+    .tag:hover { background: var(--color-primary); color: #fff; }
+
+    /* 원본 영상 카드 */
+    .source-card {
+      display: flex; gap: 20px; align-items: center;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md); padding: 24px;
+      margin-bottom: 48px;
+      transition: box-shadow var(--transition);
+    }
+    .source-card:hover { box-shadow: 0 8px 30px var(--color-shadow-lg); }
+    .source-thumb {
+      width: 180px; height: 100px; border-radius: var(--radius-sm);
+      object-fit: cover; flex-shrink: 0;
+    }
+    .source-info { flex: 1; min-width: 0; }
+    .source-label {
+      font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 1px; color: var(--color-text-muted); margin-bottom: 8px;
+    }
+    .source-title {
+      font-family: var(--font-serif); font-size: 1.1rem;
+      font-weight: 700; color: var(--color-text); margin-bottom: 4px;
+    }
+    .source-channel { font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 12px; }
+    .source-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 20px; border-radius: var(--radius-sm);
+      background: var(--color-primary); color: #fff;
+      text-decoration: none; font-size: 0.85rem; font-weight: 600;
+      transition: all var(--transition);
+    }
+    .source-link:hover { background: var(--color-primary-dark); transform: translateY(-1px); }
+
+    /* 뉴스레터 구독 */
+    .newsletter {
+      background: linear-gradient(135deg, var(--color-primary-light), var(--color-surface));
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 48px; text-align: center; margin-bottom: 48px;
+    }
+    .newsletter h3 {
+      font-family: var(--font-serif); font-size: 1.5rem;
+      color: var(--color-text); margin-bottom: 8px;
+    }
+    .newsletter p { color: var(--color-text-secondary); margin-bottom: 24px; font-size: 0.95rem; }
+    .newsletter-form { display: flex; gap: 8px; max-width: 440px; margin: 0 auto; }
+    .newsletter-input {
+      flex: 1; padding: 12px 16px; border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm); background: var(--color-surface);
+      color: var(--color-text); font-size: 0.9rem; font-family: var(--font-sans);
+      outline: none; transition: border-color var(--transition);
+    }
+    .newsletter-input:focus { border-color: var(--color-primary); }
+    .newsletter-btn {
+      padding: 12px 24px; border: none; border-radius: var(--radius-sm);
+      background: var(--color-primary); color: #fff;
+      font-size: 0.9rem; font-weight: 600; cursor: pointer;
+      font-family: var(--font-sans); transition: all var(--transition);
+    }
+    .newsletter-btn:hover { background: var(--color-primary-dark); }
+
+    /* 댓글 영역 */
+    .comments-section {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 32px; margin-bottom: 48px;
+    }
+    .comments-title {
+      font-family: var(--font-serif); font-size: 1.25rem;
+      color: var(--color-text); margin-bottom: 20px;
+    }
+    .comments-placeholder {
+      text-align: center; padding: 40px;
+      color: var(--color-text-muted); font-size: 0.9rem;
+    }
+
+    /* ===== 푸터 ===== */
+    .site-footer {
+      border-top: 1px solid var(--color-border);
+      background: var(--color-surface);
+    }
+    .footer-inner {
+      max-width: var(--layout-width); margin: 0 auto;
+      padding: 40px 24px; text-align: center;
+    }
+    .footer-links { display: flex; justify-content: center; gap: 20px; margin-bottom: 16px; flex-wrap: wrap; }
+    .footer-links a {
+      color: var(--color-text-muted); text-decoration: none;
+      font-size: 0.85rem; transition: color var(--transition);
+    }
+    .footer-links a:hover { color: var(--color-primary); }
+    .footer-copy { color: var(--color-text-muted); font-size: 0.8rem; }
+    .footer-copy a { color: var(--color-primary); text-decoration: none; }
+
+    /* ===== 반응형 ===== */
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; max-width: var(--content-width); }
+      .layout-left { display: none; }
+      .sidebar { display: none; }
+    }
+    @media (max-width: 768px) {
+      .hero { min-height: 360px; }
+      .hero-title { font-size: 1.85rem; }
+      .hero-content { padding: 40px 16px 32px; }
+      .layout { padding: 32px 16px 60px; }
+      .article-body p { font-size: 1rem; }
+      .navbar-menu .menu-text { display: none; }
+      .source-card { flex-direction: column; }
+      .source-thumb { width: 100%; height: 180px; }
+      .newsletter { padding: 32px 20px; }
+      .newsletter-form { flex-direction: column; }
+      .post-footer { padding: 0 16px 60px; }
+    }
+    @media (max-width: 480px) {
+      .hero-title { font-size: 1.5rem; }
+      .hero-meta { font-size: 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- 네비게이션 바 -->
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <a href="../index.html" class="navbar-logo"><span class="logo-dot"></span>Colony Blog</a>
+      <ul class="navbar-menu">
+        <li><a href="../index.html"><span class="menu-text">홈</span></a></li>
+        <li><a href="../index.html#categories"><span class="menu-text">카테고리</span></a></li>
+        <li><a href="../index.html#about"><span class="menu-text">소개</span></a></li>
+        <li><button class="theme-toggle" id="themeToggle" aria-label="다크 모드 전환">🌙</button></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- 히어로 영역 -->
+  <header class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content animate-in">
+      <div class="hero-tags"><span class="hero-tag">멀티에이전트</span><span class="hero-tag">DeskRPG</span><span class="hero-tag">AI 에이전트 관리</span><span class="hero-tag">오픈클로 멀티에이전트</span><span class="hero-tag">메타버스 가상 오피스</span><span class="hero-tag">AI 에이전트 오케스트레이션</span><span class="hero-tag">셀프호스팅 AI 에이전트</span></div>
+      <h1 class="hero-title">DeskRPG 설치 가이드: AI 멀티에이전트를 2D 메타버스 오피스에서 관리하는 법</h1>
+      <div class="hero-meta">
+        <span class="hero-meta-item">
+          <svg viewBox="0 0 16 16"><path d="M8 0a8 8 0 100 16A8 8 0 008 0zm.5 4.5v4l3.5 2-.5.87-4-2.37V4.5h1z"/></svg>
+          2026년 4월 3일
+        </span>
+        <span class="hero-meta-item">
+          <svg viewBox="0 0 16 16"><path d="M1.5 1h13a.5.5 0 01.5.5v11a.5.5 0 01-.5.5h-13a.5.5 0 01-.5-.5v-11a.5.5 0 01.5-.5zm1 2v2h3V3h-3zm5 0v2h5V3H7.5zm-5 4v2h3V7h-3zm5 0v2h5V7H7.5zm-5 4v2h3v-2h-3zm5 0v2h5v-2H7.5z"/></svg>
+          약 13분
+        </span>
+        <span class="hero-meta-item">
+          <svg viewBox="0 0 16 16"><path d="M4 4a4 4 0 118 0 4 4 0 01-8 0zm4-2a2 2 0 100 4 2 2 0 000-4zM2 14s-1 0-1-1 1-4 7-4 7 3 7 4-1 1-1 1H2z"/></svg>
+          Colony AI
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <!-- 본문 + 사이드바 레이아웃 -->
+  <main class="layout">
+    <div class="layout-left"></div>
+
+    <article class="article-body animate-in delay-1">
+      <h1 id="ai-에이전트-여러-개를-동시에-굴리고-싶다면-2d-메타버스-오피스-deskrpg가-답이다"><a class="heading-anchor" href="#ai-에이전트-여러-개를-동시에-굴리고-싶다면-2d-메타버스-오피스-deskrpg가-답이다">#</a>AI 에이전트 여러 개를 동시에 굴리고 싶다면? 2D 메타버스 오피스 DeskRPG가 답이다</h1>
+<p>AI 에이전트 하나쯤은 써봤을 것이다. ChatGPT에 플러그인 붙이고, 오픈클로(OpenClaw)로 자동화 파이프라인 하나 만들어 본 경험 말이다. 그런데 에이전트를 <strong>2개, 3개, 5개</strong> 동시에 돌리려 하면 벽에 부딪힌다. Docker 설정, 에이전트 간 역할 분배, 서버 구성까지 — 난이도가 수직 상승한다. 단테랩스 채널의 "OpenClaw 멀티에이전트 메타버스 오피스 만들기" 영상은 바로 이 문제를 정면으로 다루며, <strong>DeskRPG</strong>라는 흥미로운 해법을 제시한다.</p>
+<blockquote><p><strong>TL;DR</strong></p></blockquote>
+<blockquote><p>- 멀티에이전트 운영의 최대 장벽은 기술이 아니라 <strong>관리 인터페이스의 부재</strong>다</p></blockquote>
+<blockquote><p>- DeskRPG는 2D 픽셀아트 가상 오피스에서 AI 에이전트를 "직원처럼" 고용·관리하는 오픈소스 도구다</p></blockquote>
+<blockquote><p>- <code>npx</code> 두 줄이면 설치 완료, 월 13,000원 VPS면 클라우드 운영까지 가능하다</p></blockquote>
+<hr>
+<h2 id="멀티에이전트의-두-번째-벽이란-무엇인가"><a class="heading-anchor" href="#멀티에이전트의-두-번째-벽이란-무엇인가">#</a>멀티에이전트의 "두 번째 벽"이란 무엇인가</h2>
+<p>단일 에이전트 운영은 이제 진입장벽이 거의 없다. 문제는 그 다음이다. 에이전트 3개를 동시에 돌려 각각 리서치, 코딩, 리뷰를 맡기려면 <strong>오케스트레이션</strong>(orchestration, 복수 에이전트의 조율과 관리)이 필요하다. 현재 대부분의 멀티에이전트 도구는 CLI나 설정 파일 수준에 머물러 있어, 어떤 에이전트가 무엇을 하고 있는지 파악하기가 쉽지 않다.</p>
+<p>DeskRPG는 이 문제를 <strong>시각적 인터페이스</strong>로 해결한다. 터미널 로그를 읽는 대신, 2D RPG 감성의 가상 오피스에서 에이전트가 업무하는 모습을 직접 관찰할 수 있다. 단순한 UI 래퍼가 아니라, 에이전트의 업무 과정 자체를 <strong>관찰 가능하게(observable)</strong> 만든다는 점이 핵심이다.</p>
+<hr>
+<h2 id="에이전트를-직원으로-고용하는-구조"><a class="heading-anchor" href="#에이전트를-직원으로-고용하는-구조">#</a>에이전트를 "직원"으로 고용하는 구조</h2>
+<p>DeskRPG의 워크플로우는 직관적이다:</p>
+<ol><ul><li><strong>NPC 고용</strong> — 가상 오피스에 AI NPC를 배치한다</li>
+<li><strong>에이전트 연결</strong> — 오픈클로 에이전트를 해당 NPC에 바인딩한다</li>
+<li><strong>페르소나 주입</strong> — 역할과 성격을 설정한다 (예: "시니어 백엔드 개발자, 꼼꼼한 코드 리뷰어")</li>
+<li><strong>태스크 할당</strong> — 업무를 지시하고, 태스크 보드에서 진행 상황을 추적한다</li>
+</ul></ol>
+여기서 주목할 점은 <strong>조직적 메타포</strong>의 활용이다. 에이전트를 API 엔드포인트나 프로세스가 아닌 "팀원"으로 취급함으로써, 비개발 직군도 멀티에이전트 관리에 접근할 수 있게 된다. 업무 할당, 진행 보고 요청, 중단된 업무 재개 등 실제 팀 운영과 동일한 인터랙션이 가능하다.
+<p>캐릭터 커스터마이징에는 <strong>LPC(Liberated Pixel Cup)</strong> 스프라이트 시스템을 채택했다. 피부 톤, 의상, 장신구 조합으로 에이전트별 시각적 식별이 가능해, 5개 이상의 에이전트를 동시 운영할 때 혼선을 줄인다.</p>
+<hr>
+<h2 id="멀티유저-실시간-협업과-회의실"><a class="heading-anchor" href="#멀티유저-실시간-협업과-회의실">#</a>멀티유저 실시간 협업과 회의실</h2>
+<p>DeskRPG는 단순한 1인용 대시보드가 아니다. <strong>WebSocket 기반 실시간 동기화</strong>로 여러 사람이 동시 접속하여 같은 맵에서 상호작용할 수 있다. 전용 회의실에서는 복수의 NPC(에이전트)와 사람이 함께 특정 주제를 토의하고, <strong>회의록을 자동 생성</strong>한다.</p>
+<p>권한 체계도 실용적으로 설계되어 있다:<br><ul><li>최초 접속자가 <strong>관리자</strong> 권한을 획득</li><br><li>이후 사용자는 관리자의 승인이 필요</li><br><li>채널(맵)별 <strong>공개/비공개 설정</strong> 가능</li><br></ul><br>이는 소규모 팀이 실제 업무에 투입할 수 있는 수준의 접근 제어 모델이다.</p>
+<hr>
+<h2 id="설치-2줄-비용-월-13000원의-현실성"><a class="heading-anchor" href="#설치-2줄-비용-월-13000원의-현실성">#</a>설치 2줄, 비용 월 13,000원의 현실성</h2>
+<p>오픈소스 프로젝트의 성패를 가르는 것은 기능이 아니라 <strong>초기 설치 경험</strong>이라는 사실을 DeskRPG 개발자는 정확히 이해하고 있다.</p>
+<div class="code-block-wrapper"><span class="code-lang-label">bash</span><button class="code-copy-btn" onclick="navigator.clipboard.writeText(this.parentElement.querySelector('code').textContent).then(()=>{this.textContent='복사됨!';setTimeout(()=>this.textContent='복사',1500)})">복사</button><pre><code class="language-bash">npx deskrpg        # 설치
+npx deskrpg start  # 실행 (localhost:3000)</code></pre></div>
+<p>Node.js만 있으면 OS 무관하게 동작하며, 데이터는 <code>~/.deskrpg/</code>에 저장된다. 프로덕션 환경이 필요하면 PostgreSQL 연동이나 Docker Compose(오픈클로 포함 일괄 배포)로 단계적 확장이 가능하다.</p>
+<p>클라우드 운영 비용도 현실적이다. 일반 클라우드 인스턴스(월 3~4만 원)는 오픈클로 단독 운영에 오버스펙이라는 분석과 함께, <strong>VPS(가상 사설 서버)</strong> 활용 시 월 약 13,000원(24개월 약정 기준)으로 운영 가능하다는 구체적 수치를 제시한다.</p>
+<hr>
+<h2 id="왜-이것이-중요한가-3가지-산업-시그널"><a class="heading-anchor" href="#왜-이것이-중요한가-3가지-산업-시그널">#</a>왜 이것이 중요한가: 3가지 산업 시그널</h2>
+<p><strong>첫째, 에이전트 오케스트레이션 UX가 새로운 경쟁 영역이다.</strong> AI 에이전트 기술은 빠르게 성숙하고 있지만, 관리 인터페이스는 정체 상태다. DeskRPG의 게이미피케이션 접근은 이 공백을 겨냥한다.</p>
+<p><strong>둘째, 셀프호스팅이 AI 에이전트 운영의 기본값이 되고 있다.</strong> 데이터 주권과 비용 통제에 대한 요구가 SaaS 의존에서 자체 인프라로의 전환을 가속하고 있다.</p>
+<p><strong>셋째, "메타버스"가 실용적 맥락에서 부활하고 있다.</strong> 3D 몰입형이 아닌 2D 픽셀아트라는 가벼운 형태가 오히려 실용성을 높였다. 과대 포장된 개념이 적절한 스케일을 찾은 사례다.</p>
+<hr>
+<h2 id="실전-적용-가이드-오늘-당장-시작하기"><a class="heading-anchor" href="#실전-적용-가이드-오늘-당장-시작하기">#</a>실전 적용 가이드: 오늘 당장 시작하기</h2>
+<ol><ul><li><strong>Node.js 설치 확인</strong> — <code>node -v</code>로 버전 확인 (18+ 권장)</li>
+<li><strong>로컬 실행</strong> — <code>npx deskrpg &amp;&amp; npx deskrpg start</code>로 즉시 체험</li>
+<li><strong>에이전트 연결</strong> — 오픈클로 대시보드 URL과 게이트웨이 토큰, 또는 LLM API 키 직접 입력</li>
+<li><strong>NPC 고용 후 간단한 태스크 할당</strong> — 리서치, 요약 등 저위험 작업부터 시작</li>
+<li><strong>팀 확장</strong> — 멀티유저 접속으로 동료와 함께 에이전트 관리 체험</li>
+<li><strong>클라우드 전환</strong> — VPS에 Docker Compose로 배포하여 상시 운영 환경 구축</li>
+</ul></ol>
+<hr>
+<h2 id="마무리"><a class="heading-anchor" href="#마무리">#</a>마무리</h2>
+<ul><li>멀티에이전트 운영의 핵심 병목은 기술이 아니라 <strong>관리 UX</strong>이며, DeskRPG는 이를 시각적 메타버스로 해결한다</li>
+<li><code>npx</code> 두 줄 설치와 월 13,000원 VPS 운영으로 <strong>진입장벽을 극단적으로 낮췄다</strong></li>
+<li>에이전트를 "직원"으로 고용하는 조직적 메타포는 비개발 직군까지 <strong>멀티에이전트 관리의 문을 연다</strong></li>
+</ul>
+여러분은 AI 에이전트를 몇 개까지 동시에 운영해 보셨나요? 멀티에이전트 관리에서 가장 큰 어려움은 무엇이었는지 댓글로 공유해 주세요.
+<p>더 자세한 설치 과정과 실제 동작 화면은 <strong>단테랩스 채널의 원본 영상</strong>에서 확인할 수 있다.</p>
+    </article>
+
+    <aside class="sidebar">
+      <div class="toc-panel">
+        <div class="toc-title">목차</div>
+        <a href="#멀티에이전트의-두-번째-벽이란-무엇인가" class="toc-link toc-h2">멀티에이전트의 &quot;두 번째 벽&quot;이란 무엇인가</a><a href="#에이전트를-직원으로-고용하는-구조" class="toc-link toc-h2">에이전트를 &quot;직원&quot;으로 고용하는 구조</a><a href="#멀티유저-실시간-협업과-회의실" class="toc-link toc-h2">멀티유저 실시간 협업과 회의실</a><a href="#설치-2줄-비용-월-13000원의-현실성" class="toc-link toc-h2">설치 2줄, 비용 월 13,000원의 현실성</a><a href="#왜-이것이-중요한가-3가지-산업-시그널" class="toc-link toc-h2">왜 이것이 중요한가: 3가지 산업 시그널</a><a href="#실전-적용-가이드-오늘-당장-시작하기" class="toc-link toc-h2">실전 적용 가이드: 오늘 당장 시작하기</a><a href="#마무리" class="toc-link toc-h2">마무리</a>
+      </div>
+      <div class="share-panel">
+        <div class="share-title">공유하기</div>
+        <div class="share-buttons">
+          <a href="https://twitter.com/intent/tweet?text=DeskRPG%20%EC%84%A4%EC%B9%98%20%EA%B0%80%EC%9D%B4%EB%93%9C%3A%20AI%20%EB%A9%80%ED%8B%B0%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8%EB%A5%BC%202D%20%EB%A9%94%ED%83%80%EB%B2%84%EC%8A%A4%20%EC%98%A4%ED%94%BC%EC%8A%A4%EC%97%90%EC%84%9C%20%EA%B4%80%EB%A6%AC%ED%95%98%EB%8A%94%20%EB%B2%95&url=https%3A%2F%2FEchoRoots.github.io%2Fcolony-blog%2Fposts%2F" target="_blank" rel="noopener noreferrer" class="share-btn" aria-label="트위터 공유">𝕏</a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2FEchoRoots.github.io%2Fcolony-blog%2Fposts%2F" target="_blank" rel="noopener noreferrer" class="share-btn" aria-label="페이스북 공유">f</a>
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2FEchoRoots.github.io%2Fcolony-blog%2Fposts%2F" target="_blank" rel="noopener noreferrer" class="share-btn" aria-label="링크드인 공유">in</a>
+          <button class="share-btn" id="copyLinkBtn" aria-label="링크 복사">🔗</button>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <!-- 하단 영역 -->
+  <div class="post-footer animate-in delay-2">
+    <div class="tags-section"><span class="tag">멀티에이전트</span><span class="tag">DeskRPG</span><span class="tag">AI 에이전트 관리</span><span class="tag">오픈클로 멀티에이전트</span><span class="tag">메타버스 가상 오피스</span><span class="tag">AI 에이전트 오케스트레이션</span><span class="tag">셀프호스팅 AI 에이전트</span></div>
+
+    <div class="source-card">
+      <img src="https://img.youtube.com/vi/hLh5K0IWk5E/maxresdefault.jpg" alt="원본 영상" class="source-thumb">
+      <div class="source-info">
+        <div class="source-label">원본 영상</div>
+        <div class="source-title">DeskRPG 설치 가이드: AI 멀티에이전트를 2D 메타버스 오피스에서 관리하는 법</div>
+        <div class="source-channel">YouTube</div>
+        <a href="https://www.youtube.com/watch?v=hLh5K0IWk5E" target="_blank" rel="noopener noreferrer" class="source-link">▶ 영상 보기</a>
+      </div>
+    </div>
+
+    <div class="newsletter">
+      <h3>새 글을 놓치지 마세요</h3>
+      <p>Colony Blog의 최신 콘텐츠를 이메일로 받아보세요.</p>
+      <form class="newsletter-form" onsubmit="event.preventDefault()">
+        <input type="email" class="newsletter-input" placeholder="이메일 주소를 입력하세요" aria-label="이메일 주소">
+        <button type="submit" class="newsletter-btn">구독</button>
+      </form>
+    </div>
+
+    <div class="comments-section">
+      <h3 class="comments-title">댓글</h3>
+      <div class="comments-placeholder">
+        <p>댓글 기능은 준비 중입니다.</p>
+        <p style="margin-top:8px;font-size:0.8rem;">GitHub Discussions 기반 댓글 시스템이 곧 연동됩니다.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 푸터 -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="../index.html">홈</a>
+        <a href="https://github.com/EchoRoots" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="../index.html#about">소개</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 <a href="https://github.com/EchoRoots/colony-blog">Colony</a> — AI Agent Orchestration Platform</p>
+    </div>
+  </footer>
+
+  <!-- 최소 JavaScript: 다크 모드 토글 + 링크 복사 -->
+  <script>
+    (function(){
+      var t=document.getElementById('themeToggle');
+      var html=document.documentElement;
+      var saved=localStorage.getItem('colony-theme');
+      if(saved){html.setAttribute('data-theme',saved);t.textContent=saved==='dark'?'☀️':'🌙';}
+      t.addEventListener('click',function(){
+        var current=html.getAttribute('data-theme');
+        var next=current==='dark'?'light':'dark';
+        html.setAttribute('data-theme',next);
+        localStorage.setItem('colony-theme',next);
+        t.textContent=next==='dark'?'☀️':'🌙';
+      });
+      var cb=document.getElementById('copyLinkBtn');
+      if(cb){cb.addEventListener('click',function(){
+        navigator.clipboard.writeText(window.location.href).then(function(){
+          cb.textContent='✓';setTimeout(function(){cb.textContent='🔗';},1500);
+        });
+      });}
+    })();
+  </script>
+</body>
+</html>
