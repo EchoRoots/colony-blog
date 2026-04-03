@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://EchoRoots.github.io/colony-blog/sitemap.xml
